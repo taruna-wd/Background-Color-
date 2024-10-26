@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=
+    , initial-scale=1.0"
+    />
+    <title>Document</title>
+    <style>
+        body{
+            text-align: center;
+        }
+    </style>
+  </head>
+  <body>
+    <h3>backgorund Color Change Randomly</h3>
+    <button class="start">Start</button>
+    <button class="stop">Stop</button>
+
+    <script>
+        // decalre variable
+      const start = document.querySelector(".start");
+      const stop = document.querySelector(".stop"); 
+
+      let obj = {
+        r: Math.floor(Math.random() * 255),
+        g: Math.floor(Math.random() * 255),
+        b: Math.floor(Math.random() * 255),
+      };
+      console.log("Initial object:", obj);
+
+      // Function to update the RGB values with new random values
+
+      function updateRGB(object) {
+        object.r = Math.floor(Math.random() * 255);
+        object.g = Math.floor(Math.random() * 255);
+        object.b = Math.floor(Math.random() * 255);
+        return object;
+      }
+      // Update the RGB values
+
+
+    //   console.log("Updated object:", update);
+      let intervalID
+      start.addEventListener("click", () => {
+          intervalID = setInterval(function( ){
+            let update = updateRGB(obj);
+        console.log(update);
+        let rgbColor = `rgb(${update.r}, ${update.g},${update.b})`;  // ese hota h ek sth values use 
+        const bgColor = document.querySelector("body");
+        bgColor.style.backgroundColor = rgbColor;
+        }, 1000)
+
+        
+      });
+
+stop.addEventListener("click" , ()=>{
+    clearInterval(intervalID)
+
+})
+    </script>
+  </body>
+</html>
